@@ -50,6 +50,8 @@ class CurrentLocationViewController: UIViewController,
     var performingReverseGeoCoding = false
     var lastGeocodingError: Error?
     
+    var timer: Timer?
+    
     // MARK:- Override Functions
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,6 +84,11 @@ class CurrentLocationViewController: UIViewController,
             return
         }
         
+        var distance = CLLocationDistance( Double.greatestFiniteMagnitude )
+        if let location = location {
+            distance = newLocation.distance(from: location)
+            print("*** Distance is: \(distance)")
+        }
         if location == nil || location!.horizontalAccuracy > newLocation.horizontalAccuracy {
             lastLocationError = nil
             location = newLocation
@@ -89,6 +96,9 @@ class CurrentLocationViewController: UIViewController,
             if newLocation.horizontalAccuracy <= locationManager.desiredAccuracy {
                 print("*** We are done!")
                 stopLocationManager()
+                if distance > 0 {
+                    performingReverseGeoCoding = false
+                }
             }
             updateLabels()
             
@@ -108,6 +118,13 @@ class CurrentLocationViewController: UIViewController,
                     
                 })
             }
+        } else if distance < 1 {
+            let timeInterval = newLocation.timestamp.timeIntervalSince(location!.timestamp)
+            if timeInterval > 10 {
+                print("*** Force done!")
+                stopLocationManager()
+                updateLabels()
+            }
         }
     }
     
@@ -117,6 +134,7 @@ class CurrentLocationViewController: UIViewController,
             locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
             locationManager.startUpdatingLocation()
             updatingLocation = true
+            timer = Timer.scheduledTimer(timeInterval: 60, target: self, selector: #selector(didTimeOut), userInfo: nil, repeats: false)
         }
     }
     
@@ -125,6 +143,19 @@ class CurrentLocationViewController: UIViewController,
             locationManager.stopUpdatingLocation()
             locationManager.delegate = nil
             updatingLocation = false
+            
+            if let timer = timer {
+                timer.invalidate()
+            }
+        }
+    }
+    
+    @objc func didTimeOut() {
+        print("*** Time Out")
+        if location == nil {
+            stopLocationManager()
+            lastLocationError = NSError(domain: "MyLocationsErrorDomain", code: 1, userInfo: nil)
+            updateLabels()
         }
     }
 
@@ -213,7 +244,7 @@ class CurrentLocationViewController: UIViewController,
             line2 += s + ", "
         }
         if let s = placemark.postalCode {
-            line2 += s
+            line2 += s + ", "
         }
         if let s = placemark.country {
             line2 += s
