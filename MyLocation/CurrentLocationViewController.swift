@@ -209,7 +209,7 @@ class CurrentLocationViewController: UIViewController,
             } else if updatingLocation {
                 statusMessage = "Searching..."
             } else {
-                statusMessage = "Tap 'Get My Location' to Start"
+                statusMessage = "Tap 'Get My Location' to Start "
             }
             messageLabel.text = statusMessage
         }
