@@ -6,8 +6,15 @@
 //  Copyright © 2020 Jonathan Baird . All rights reserved.
 //
 
-import Foundation
 import UIKit
+import CoreLocation
+
+private let dateFormatter: DateFormatter = {
+    let formatter = DateFormatter()
+    formatter.dateStyle = .medium
+    formatter.timeStyle = .short
+    return formatter
+}()
 
 class LocationDetailsViewController: UITableViewController {
     @IBOutlet weak var descriptionTextView: UITextView!
@@ -25,9 +32,74 @@ class LocationDetailsViewController: UITableViewController {
         navigationController?.popViewController(animated: true)
     }
     
+    @IBAction func categoryPickerDidPickCategory(_ segue: UIStoryboardSegue) {
+        let controller = segue.source as! CategoryPickerViewController
+        categoryName = controller.selectedCategoryName
+        categoryLabel.text = categoryName
+    }
+    
     
     // MARK:- Override Functions
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        descriptionTextView.text = ""
+        categoryLabel.text = categoryName
+        
+        latitudeLabel.text = String(format: "%.8f", coordinate.latitude)
+        longitudeLabel.text = String(format: "%.8f", coordinate.longitude)
+        
+        if let placemark = placemark {
+            addressLabel.text = string(from: placemark)
+        } else {
+            addressLabel.text = "No Address Found"
+        }
+        dateLabel.text = format(date: Date())
     }
+    
+    // MARK:- Properties
+    var coordinate = CLLocationCoordinate2D(latitude: 0,
+                                            longitude: 0)
+    var placemark: CLPlacemark?
+    
+    var categoryName = "No Category"
+    
+    
+    // MARK:- Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "PickCategory" {
+            let controller = segue.destination as! CategoryPickerViewController
+            controller.selectedCategoryName = categoryName
+        }
+    }
+    
+    // MARK:- Helper Methods
+    
+    func string(from placemark: CLPlacemark) -> String {
+        var text = ""
+        if let s = placemark.subThoroughfare {
+            text += s + " "
+        }
+        if let s = placemark.thoroughfare {
+            text += s + ", "
+        }
+        if let s = placemark.locality {
+            text += s + ", "
+        }
+        if let s = placemark.administrativeArea {
+            text += s + " "
+        }
+        if let s = placemark.postalCode {
+            text += s + ", "
+        }
+        if let s = placemark.country {
+            text += s
+        }
+        return text
+    }
+    
+    func format(date: Date) -> String {
+        return dateFormatter.string(from: date)
+    }
+    
 }
