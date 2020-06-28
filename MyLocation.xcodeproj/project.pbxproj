@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3225DCC02448B4B8000E8D26 /* LocationDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3225DCBF2448B4B8000E8D26 /* LocationDetailsViewController.swift */; };
+		3225DCC22449C5D1000E8D26 /* CategoryPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3225DCC12449C5D1000E8D26 /* CategoryPickerViewController.swift */; };
 		32BBC2E32440BE4700C19120 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BBC2E22440BE4700C19120 /* AppDelegate.swift */; };
 		32BBC2E52440BE4700C19120 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BBC2E42440BE4700C19120 /* SceneDelegate.swift */; };
 		32BBC2E72440BE4700C19120 /* CurrentLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BBC2E62440BE4700C19120 /* CurrentLocationViewController.swift */; };
@@ -18,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3225DCBF2448B4B8000E8D26 /* LocationDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailsViewController.swift; sourceTree = "<group>"; };
+		3225DCC12449C5D1000E8D26 /* CategoryPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPickerViewController.swift; sourceTree = "<group>"; };
 		32BBC2DF2440BE4700C19120 /* MyLocation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyLocation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		32BBC2E22440BE4700C19120 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		32BBC2E42440BE4700C19120 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -64,6 +68,8 @@
 				32BBC2E22440BE4700C19120 /* AppDelegate.swift */,
 				32BBC2E42440BE4700C19120 /* SceneDelegate.swift */,
 				32BBC2E62440BE4700C19120 /* CurrentLocationViewController.swift */,
+				3225DCBF2448B4B8000E8D26 /* LocationDetailsViewController.swift */,
+				3225DCC12449C5D1000E8D26 /* CategoryPickerViewController.swift */,
 				32BBC2E82440BE4700C19120 /* SecondViewController.swift */,
 				32BBC2EA2440BE4700C19120 /* Main.storyboard */,
 				32BBC2F02440BE4800C19120 /* Assets.xcassets */,
@@ -145,8 +151,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3225DCC02448B4B8000E8D26 /* LocationDetailsViewController.swift in Sources */,
 				32BBC2E92440BE4700C19120 /* SecondViewController.swift in Sources */,
 				32BBC2EF2440BE4700C19120 /* MyLocation.xcdatamodeld in Sources */,
+				3225DCC22449C5D1000E8D26 /* CategoryPickerViewController.swift in Sources */,
 				32BBC2E72440BE4700C19120 /* CurrentLocationViewController.swift in Sources */,
 				32BBC2E32440BE4700C19120 /* AppDelegate.swift in Sources */,
 				32BBC2E52440BE4700C19120 /* SceneDelegate.swift in Sources */,
