@@ -47,6 +47,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		32909F1724A8F8FC004A89AF /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				32BBC2E62440BE4700C19120 /* CurrentLocationViewController.swift */,
+				3225DCBF2448B4B8000E8D26 /* LocationDetailsViewController.swift */,
+				3225DCC12449C5D1000E8D26 /* CategoryPickerViewController.swift */,
+				32BBC2E82440BE4700C19120 /* SecondViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		32909F1824A8F915004A89AF /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				32909F1524A8F2F9004A89AF /* HudView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		32BBC2D62440BE4700C19120 = {
 			isa = PBXGroup;
 			children = (
@@ -67,18 +86,15 @@
 		32BBC2E12440BE4700C19120 /* MyLocation */ = {
 			isa = PBXGroup;
 			children = (
+				32909F1824A8F915004A89AF /* Components */,
+				32909F1724A8F8FC004A89AF /* ViewControllers */,
 				32BBC2E22440BE4700C19120 /* AppDelegate.swift */,
 				32BBC2E42440BE4700C19120 /* SceneDelegate.swift */,
-				32BBC2E62440BE4700C19120 /* CurrentLocationViewController.swift */,
-				3225DCBF2448B4B8000E8D26 /* LocationDetailsViewController.swift */,
-				3225DCC12449C5D1000E8D26 /* CategoryPickerViewController.swift */,
-				32BBC2E82440BE4700C19120 /* SecondViewController.swift */,
 				32BBC2EA2440BE4700C19120 /* Main.storyboard */,
 				32BBC2F02440BE4800C19120 /* Assets.xcassets */,
 				32BBC2F22440BE4800C19120 /* LaunchScreen.storyboard */,
 				32BBC2F52440BE4800C19120 /* Info.plist */,
 				32BBC2ED2440BE4700C19120 /* MyLocation.xcdatamodeld */,
-				32909F1524A8F2F9004A89AF /* HudView.swift */,
 			);
 			path = MyLocation;
 			sourceTree = "<group>";
