@@ -19,7 +19,6 @@
 		32BBC2E72440BE4700C19120 /* CurrentLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BBC2E62440BE4700C19120 /* CurrentLocationViewController.swift */; };
 		32BBC2E92440BE4700C19120 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BBC2E82440BE4700C19120 /* SecondViewController.swift */; };
 		32BBC2EC2440BE4700C19120 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32BBC2EA2440BE4700C19120 /* Main.storyboard */; };
-		32BBC2EF2440BE4700C19120 /* MyLocation.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 32BBC2ED2440BE4700C19120 /* MyLocation.xcdatamodeld */; };
 		32BBC2F12440BE4800C19120 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32BBC2F02440BE4800C19120 /* Assets.xcassets */; };
 		32BBC2F42440BE4800C19120 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32BBC2F22440BE4800C19120 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -38,7 +37,6 @@
 		32BBC2E62440BE4700C19120 /* CurrentLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentLocationViewController.swift; sourceTree = "<group>"; };
 		32BBC2E82440BE4700C19120 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		32BBC2EB2440BE4700C19120 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		32BBC2EE2440BE4700C19120 /* MyLocation.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MyLocation.xcdatamodel; sourceTree = "<group>"; };
 		32BBC2F02440BE4800C19120 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		32BBC2F32440BE4800C19120 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		32BBC2F52440BE4800C19120 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -122,7 +120,6 @@
 				32BBC2F02440BE4800C19120 /* Assets.xcassets */,
 				32BBC2F22440BE4800C19120 /* LaunchScreen.storyboard */,
 				32BBC2F52440BE4800C19120 /* Info.plist */,
-				32BBC2ED2440BE4700C19120 /* MyLocation.xcdatamodeld */,
 			);
 			path = MyLocation;
 			sourceTree = "<group>";
@@ -202,7 +199,6 @@
 				32909F1E24A9089B004A89AF /* DataModel.xcdatamodeld in Sources */,
 				32BBC2E92440BE4700C19120 /* SecondViewController.swift in Sources */,
 				32909F1A24A8FE23004A89AF /* Functions.swift in Sources */,
-				32BBC2EF2440BE4700C19120 /* MyLocation.xcdatamodeld in Sources */,
 				3225DCC22449C5D1000E8D26 /* CategoryPickerViewController.swift in Sources */,
 				32909F1624A8F2F9004A89AF /* HudView.swift in Sources */,
 				32BBC2E72440BE4700C19120 /* CurrentLocationViewController.swift in Sources */,
@@ -416,16 +412,6 @@
 			);
 			currentVersion = 32909F1D24A9089B004A89AF /* DataModel.xcdatamodel */;
 			path = DataModel.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-		32BBC2ED2440BE4700C19120 /* MyLocation.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				32BBC2EE2440BE4700C19120 /* MyLocation.xcdatamodel */,
-			);
-			currentVersion = 32BBC2EE2440BE4700C19120 /* MyLocation.xcdatamodel */;
-			path = MyLocation.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
