@@ -7,17 +7,94 @@
 //
 
 import UIKit
+import CoreData
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
+    // MARK: - Core Data stack
+
+    lazy var persistentContainer: NSPersistentContainer = {
+        let container = NSPersistentContainer(name: "DataModel")
+        container.loadPersistentStores(completionHandler: {
+            storeDescription, error in
+            if let error = error as NSError? {
+                fatalError("Couldn't load data store: \(error), \(error.userInfo)")
+            }
+        })
+        return container
+    }()
+    
+    lazy var managedObjectContext: NSManagedObjectContext = persistentContainer.viewContext
+    
+    // MARK: - Core Data Saving support
+
+    func saveContext () {
+        let context = managedObjectContext
+        if context.hasChanges {
+            do {
+                try context.save()
+            } catch {
+
+                let nserror = error as NSError
+                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+            }
+        }
+    }
+    
+    // MARK: - Helper Methods
+    
+    func listenForFatalCoreDataNotifications() {
+        NotificationCenter.default.addObserver(
+            forName: CoreDataSaveFailedNotification,
+            object: nil,
+            queue: OperationQueue.main,
+            using: { notification in
+                let message = """
+There was a fatal error in the app and it cannot continue.
+
+Press OK to terminate the app. Sorry for the inconvenience.
+"""
+                let alert = UIAlertController(
+                    title: "Internal Error",
+                    message: message,
+                    preferredStyle: .alert)
+                
+                let action = UIAlertAction(
+                    title: "OK",
+                    style: .default) { _ in
+                        let exception = NSException(
+                            name: NSExceptionName.internalInconsistencyException,
+                            reason: "Fatal Core Data Error",
+                            userInfo: nil)
+                        exception.raise()
+                }
+                alert.addAction(action)
+                
+                let tabController = self.window!.rootViewController!
+                tabController.present(alert, animated: true, completion: nil)
+                
+        })
+    }
+    
+    // MARK: - Scence Delegate methods
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let _ = (scene as? UIWindowScene) else { return }
+        
+        let tabController = window!.rootViewController as! UITabBarController
+        
+        if let tabViewControllers = tabController.viewControllers {
+            let navController = tabViewControllers[0] as! UINavigationController
+            let controller = navController.viewControllers.first as! CurrentLocationViewController
+            controller.managedObjectContext = managedObjectContext
+        }
+        
+        listenForFatalCoreDataNotifications()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -48,7 +125,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // to restore the scene back to its current state.
 
         // Save changes in the application's managed object context when the application transitions to the background.
-        (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
+        saveContext()
     }
 
 
