@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3225DCC02448B4B8000E8D26 /* LocationDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3225DCBF2448B4B8000E8D26 /* LocationDetailsViewController.swift */; };
 		3225DCC22449C5D1000E8D26 /* CategoryPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3225DCC12449C5D1000E8D26 /* CategoryPickerViewController.swift */; };
+		325CC6B224C72C2C00ACA038 /* LocationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325CC6B124C72C2C00ACA038 /* LocationsViewController.swift */; };
 		32909F1624A8F2F9004A89AF /* HudView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32909F1524A8F2F9004A89AF /* HudView.swift */; };
 		32909F1A24A8FE23004A89AF /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32909F1924A8FE23004A89AF /* Functions.swift */; };
 		32909F1E24A9089B004A89AF /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 32909F1C24A9089B004A89AF /* DataModel.xcdatamodeld */; };
@@ -26,6 +27,7 @@
 /* Begin PBXFileReference section */
 		3225DCBF2448B4B8000E8D26 /* LocationDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailsViewController.swift; sourceTree = "<group>"; };
 		3225DCC12449C5D1000E8D26 /* CategoryPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPickerViewController.swift; sourceTree = "<group>"; };
+		325CC6B124C72C2C00ACA038 /* LocationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsViewController.swift; sourceTree = "<group>"; };
 		32909F1524A8F2F9004A89AF /* HudView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HudView.swift; sourceTree = "<group>"; };
 		32909F1924A8FE23004A89AF /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		32909F1D24A9089B004A89AF /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
@@ -60,6 +62,7 @@
 				3225DCBF2448B4B8000E8D26 /* LocationDetailsViewController.swift */,
 				3225DCC12449C5D1000E8D26 /* CategoryPickerViewController.swift */,
 				32BBC2E82440BE4700C19120 /* SecondViewController.swift */,
+				325CC6B124C72C2C00ACA038 /* LocationsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -206,6 +209,7 @@
 				32BBC2E32440BE4700C19120 /* AppDelegate.swift in Sources */,
 				32909F2124A91268004A89AF /* Location+CoreDataClass.swift in Sources */,
 				32BBC2E52440BE4700C19120 /* SceneDelegate.swift in Sources */,
+				325CC6B224C72C2C00ACA038 /* LocationsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
