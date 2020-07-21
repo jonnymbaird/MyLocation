@@ -24,6 +24,10 @@ public class Location: NSManagedObject {
           if let s = placemark.locality {
             text += s
           }
+        } else {
+            text = String(format: "Lat: %.8f, Long: %.8f",
+                          self.latitude,
+                          self.longitude)
         }
         return text
     }

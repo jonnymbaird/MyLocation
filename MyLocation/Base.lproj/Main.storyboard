@@ -123,7 +123,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LocationCell" rowHeight="56" id="ZsH-CF-68f">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LocationCell" rowHeight="56" id="ZsH-CF-68f" customClass="LocationCell" customModule="MyLocation" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="56"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZsH-CF-68f" id="yyT-qN-5Tt">
@@ -153,6 +153,10 @@
                                         <constraint firstItem="gTL-fx-pZR" firstAttribute="bottom" secondItem="yyT-qN-5Tt" secondAttribute="bottomMargin" id="xFM-pw-xpD"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="addressLabel" destination="gTL-fx-pZR" id="y0v-9N-3Gj"/>
+                                    <outlet property="descriptionLabel" destination="hob-Tg-isO" id="bdl-i9-EQQ"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
