@@ -156,6 +156,7 @@
                                 <connections>
                                     <outlet property="addressLabel" destination="gTL-fx-pZR" id="y0v-9N-3Gj"/>
                                     <outlet property="descriptionLabel" destination="hob-Tg-isO" id="bdl-i9-EQQ"/>
+                                    <segue destination="SJc-O2-EP7" kind="show" identifier="EditLocation" id="Acv-Dp-POe"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -490,6 +491,9 @@
             <point key="canvasLocation" x="749.60000000000002" y="-320.68965517241384"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Acv-Dp-POe"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="first" width="30" height="30"/>
     </resources>
