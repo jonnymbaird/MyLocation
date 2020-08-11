@@ -60,12 +60,12 @@
 		32909F1724A8F8FC004A89AF /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				32BBC2E62440BE4700C19120 /* CurrentLocationViewController.swift */,
-				3225DCBF2448B4B8000E8D26 /* LocationDetailsViewController.swift */,
 				3225DCC12449C5D1000E8D26 /* CategoryPickerViewController.swift */,
-				32BBC2E82440BE4700C19120 /* SecondViewController.swift */,
-				325CC6B124C72C2C00ACA038 /* LocationsViewController.swift */,
+				32BBC2E62440BE4700C19120 /* CurrentLocationViewController.swift */,
 				325CC6B324C74DEB00ACA038 /* LocationCell.swift */,
+				3225DCBF2448B4B8000E8D26 /* LocationDetailsViewController.swift */,
+				325CC6B124C72C2C00ACA038 /* LocationsViewController.swift */,
+				32BBC2E82440BE4700C19120 /* SecondViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
