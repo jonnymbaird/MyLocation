@@ -23,6 +23,7 @@
 		32BBC2EC2440BE4700C19120 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32BBC2EA2440BE4700C19120 /* Main.storyboard */; };
 		32BBC2F12440BE4800C19120 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32BBC2F02440BE4800C19120 /* Assets.xcassets */; };
 		32BBC2F42440BE4800C19120 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32BBC2F22440BE4800C19120 /* LaunchScreen.storyboard */; };
+		32DCB8DB24E2F44C0033BAC8 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DCB8DA24E2F44C0033BAC8 /* MapViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		32BBC2F02440BE4800C19120 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		32BBC2F32440BE4800C19120 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		32BBC2F52440BE4800C19120 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		32DCB8DA24E2F44C0033BAC8 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				3225DCBF2448B4B8000E8D26 /* LocationDetailsViewController.swift */,
 				325CC6B124C72C2C00ACA038 /* LocationsViewController.swift */,
 				32BBC2E82440BE4700C19120 /* SecondViewController.swift */,
+				32DCB8DA24E2F44C0033BAC8 /* MapViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -214,6 +217,7 @@
 				32909F2124A91268004A89AF /* Location+CoreDataClass.swift in Sources */,
 				32BBC2E52440BE4700C19120 /* SceneDelegate.swift in Sources */,
 				325CC6B224C72C2C00ACA038 /* LocationsViewController.swift in Sources */,
+				32DCB8DB24E2F44C0033BAC8 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
