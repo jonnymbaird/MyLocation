@@ -13,7 +13,26 @@ import CoreData
 class MapViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
     
-    var managedObjectContext: NSManagedObjectContext!
+    var managedObjectContext: NSManagedObjectContext! {
+        didSet {
+            NotificationCenter.default.addObserver(
+                forName: Notification.Name.NSManagedObjectContextObjectsDidChange,
+                object: managedObjectContext,
+                queue: OperationQueue.main) { notification in
+                    
+                    if let dictionary = notification.userInfo {
+                      print(dictionary[NSInsertedObjectsKey])
+                      print(dictionary[NSUpdatedObjectsKey])
+                      print(dictionary[NSDeletedObjectsKey])
+                    }
+
+                    if self.isViewLoaded {
+                        self.updateLocations()
+                    }
+            }
+            
+        }
+    }
     
     var locations = [Location]()
     
@@ -24,15 +43,6 @@ class MapViewController: UIViewController {
         if !locations.isEmpty {
             showLocations()
         }
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        updateLocations()
-        if !locations.isEmpty {
-           showLocations()
-       }
     }
      
     // MARK: - Actions
