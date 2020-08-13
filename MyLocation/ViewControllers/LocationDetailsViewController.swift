@@ -24,6 +24,10 @@ class LocationDetailsViewController: UITableViewController {
     @IBOutlet weak var longitudeLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var addPhotoLabel: UILabel!
+    @IBOutlet weak var imageHeight: NSLayoutConstraint!
+    
     
     // MARK:- Actions
     @IBAction func done() {
@@ -89,6 +93,14 @@ class LocationDetailsViewController: UITableViewController {
     }
     var descriptionText: String = ""
     
+    var image: UIImage? {
+        didSet {
+            if let theImage = image {
+                show(image: theImage)
+            }
+        }
+    }
+    
     // MARK:- Override Functions
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -132,6 +144,7 @@ class LocationDetailsViewController: UITableViewController {
         if indexPath.section == 0 && indexPath.row == 0 {
             descriptionTextView.becomeFirstResponder()
         } else if indexPath.section == 1 && indexPath.row == 0 {
+            tableView.deselectRow(at: indexPath, animated: true)
             pickPhoto()
         }
     }
@@ -188,6 +201,16 @@ class LocationDetailsViewController: UITableViewController {
         return dateFormatter.string(from: date)
     }
     
+    func show(image: UIImage) {
+        imageView.image = image
+        imageView.isHidden = false
+        addPhotoLabel.text = ""
+        let aspectRatio: CGFloat = image.size.width / image.size.height
+        let cellHeight: CGFloat = 260 * aspectRatio
+        imageHeight.constant = cellHeight
+        tableView.reloadData()
+    }
+    
 }
 
 extension LocationDetailsViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -222,10 +245,14 @@ extension LocationDetailsViewController: UIImagePickerControllerDelegate, UINavi
         let actCancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         alert.addAction(actCancel)
         
-        let actPhoto = UIAlertAction(title: "Take Photo", style: .default, handler: nil)
+        let actPhoto = UIAlertAction(title: "Take Photo", style: .default, handler: { _ in
+            self.takePhotoWithCamera()
+        })
         alert.addAction(actPhoto)
         
-        let actLibrary = UIAlertAction(title: "Choose from Library", style: .default, handler: nil)
+        let actLibrary = UIAlertAction(title: "Choose from Library", style: .default, handler: { _ in
+            self.choosePhotoFromLibrary()
+        })
         alert.addAction(actLibrary)
         
         present(alert, animated: true, completion: nil)
@@ -234,6 +261,8 @@ extension LocationDetailsViewController: UIImagePickerControllerDelegate, UINavi
     // MARK: - Image Picker Delegates
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage
+        
         dismiss(animated: true, completion: nil)
     }
     

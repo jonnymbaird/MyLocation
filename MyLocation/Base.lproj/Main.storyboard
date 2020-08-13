@@ -306,16 +306,28 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Photo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XQ7-qF-VZ1">
-                                                    <rect key="frame" x="16" y="11.5" width="324" height="21"/>
+                                                    <rect key="frame" x="16" y="0.5" width="80.5" height="43.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="43.5" id="YAJ-nf-JHh"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Y8w-VI-tpz">
+                                                    <rect key="frame" x="96.5" y="0.0" width="251.5" height="44"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="44" id="ANf-u3-vzP"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="XQ7-qF-VZ1" firstAttribute="leading" secondItem="KI6-YT-jIA" secondAttribute="leadingMargin" id="AhE-pk-xNd"/>
-                                                <constraint firstItem="XQ7-qF-VZ1" firstAttribute="centerY" secondItem="KI6-YT-jIA" secondAttribute="centerY" id="Nnv-gb-i0f"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="XQ7-qF-VZ1" secondAttribute="trailing" id="mXh-kY-5W7"/>
+                                                <constraint firstAttribute="bottom" secondItem="Y8w-VI-tpz" secondAttribute="bottom" id="8Bg-50-8vb"/>
+                                                <constraint firstItem="XQ7-qF-VZ1" firstAttribute="leading" secondItem="KI6-YT-jIA" secondAttribute="leadingMargin" id="U8k-CD-gud"/>
+                                                <constraint firstAttribute="trailing" secondItem="Y8w-VI-tpz" secondAttribute="trailing" id="WMG-ih-yXh"/>
+                                                <constraint firstItem="Y8w-VI-tpz" firstAttribute="leading" secondItem="XQ7-qF-VZ1" secondAttribute="trailing" id="cSO-Yn-kqJ"/>
+                                                <constraint firstItem="XQ7-qF-VZ1" firstAttribute="centerY" secondItem="KI6-YT-jIA" secondAttribute="centerY" id="jT0-qk-FZD"/>
+                                                <constraint firstItem="Y8w-VI-tpz" firstAttribute="top" secondItem="KI6-YT-jIA" secondAttribute="top" id="uu5-MH-TnW"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -445,10 +457,13 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="addPhotoLabel" destination="XQ7-qF-VZ1" id="sYr-AH-1bc"/>
                         <outlet property="addressLabel" destination="8bD-Kz-7f9" id="XFi-ji-SrS"/>
                         <outlet property="categoryLabel" destination="Mbz-RY-1O2" id="sbn-Wr-mJF"/>
                         <outlet property="dateLabel" destination="nDA-LO-b5R" id="y5l-Jm-rBh"/>
                         <outlet property="descriptionTextView" destination="7VG-i5-MBo" id="Mu4-b9-cCV"/>
+                        <outlet property="imageHeight" destination="ANf-u3-vzP" id="WiL-Gx-vOP"/>
+                        <outlet property="imageView" destination="Y8w-VI-tpz" id="ZOK-SN-HCx"/>
                         <outlet property="latitudeLabel" destination="QqJ-G9-8ra" id="1My-Gm-noZ"/>
                         <outlet property="longitudeLabel" destination="tUC-sy-yW8" id="JEV-DF-o2V"/>
                     </connections>
@@ -558,7 +573,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Acv-Dp-POe"/>
+        <segue reference="wyA-ke-Yc8"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="first" width="30" height="30"/>
