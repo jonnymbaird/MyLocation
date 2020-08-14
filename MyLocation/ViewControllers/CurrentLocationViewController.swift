@@ -24,6 +24,9 @@ class CurrentLocationViewController: UIViewController,
     // MARK:- Actions
     @IBAction func getLocation() {
         let authStatus = CLLocationManager.authorizationStatus()
+        if authStatus == .notDetermined {
+          locationManager.requestWhenInUseAuthorization()
+        }
         if authStatus == .denied || authStatus == .restricted {
             showLocationServicesDeniedAlert()
             return

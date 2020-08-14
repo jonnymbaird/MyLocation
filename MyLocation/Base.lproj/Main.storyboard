@@ -123,39 +123,52 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LocationCell" rowHeight="56" id="ZsH-CF-68f" customClass="LocationCell" customModule="MyLocation" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="56"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LocationCell" id="ZsH-CF-68f" customClass="LocationCell" customModule="MyLocation" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="56.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZsH-CF-68f" id="yyT-qN-5Tt">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="56.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="100" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hob-Tg-isO">
-                                            <rect key="frame" x="16" y="11" width="343" height="9"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gTL-fx-pZR">
-                                            <rect key="frame" x="16" y="28" width="343" height="17"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gTL-fx-pZR">
+                                            <rect key="frame" x="76" y="30.5" width="283" height="17.5"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ona-vB-l9a">
+                                            <rect key="frame" x="16" y="2" width="52" height="52.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="52" id="Qym-yj-KGc"/>
+                                                <constraint firstAttribute="height" constant="52" id="jP8-6Q-7TV"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="100" contentMode="left" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hob-Tg-isO">
+                                            <rect key="frame" x="76" y="6" width="283" height="20.5"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="hob-Tg-isO" firstAttribute="leading" secondItem="yyT-qN-5Tt" secondAttribute="leadingMargin" id="Csi-r9-V3g"/>
+                                        <constraint firstItem="ona-vB-l9a" firstAttribute="leading" secondItem="yyT-qN-5Tt" secondAttribute="leading" constant="16" id="5fX-L4-Cvd"/>
+                                        <constraint firstItem="hob-Tg-isO" firstAttribute="leading" secondItem="ona-vB-l9a" secondAttribute="trailing" constant="8" id="9jK-65-PpL"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="gTL-fx-pZR" secondAttribute="trailing" id="LVN-KL-om9"/>
                                         <constraint firstItem="hob-Tg-isO" firstAttribute="top" secondItem="yyT-qN-5Tt" secondAttribute="topMargin" id="NOF-7e-PHA"/>
                                         <constraint firstItem="hob-Tg-isO" firstAttribute="trailing" secondItem="yyT-qN-5Tt" secondAttribute="trailingMargin" id="Qxe-aL-zMx"/>
-                                        <constraint firstItem="hob-Tg-isO" firstAttribute="leading" secondItem="gTL-fx-pZR" secondAttribute="leading" id="ZeU-1O-SOA"/>
-                                        <constraint firstItem="gTL-fx-pZR" firstAttribute="top" secondItem="hob-Tg-isO" secondAttribute="bottom" constant="8" id="nYm-K8-pIt"/>
-                                        <constraint firstItem="hob-Tg-isO" firstAttribute="trailing" secondItem="gTL-fx-pZR" secondAttribute="trailing" id="uQr-MY-5P0"/>
+                                        <constraint firstAttribute="bottom" secondItem="ona-vB-l9a" secondAttribute="bottom" constant="2" id="hof-EC-qqw"/>
+                                        <constraint firstItem="gTL-fx-pZR" firstAttribute="leading" secondItem="ona-vB-l9a" secondAttribute="trailing" constant="8" id="ngA-wA-OUg"/>
+                                        <constraint firstItem="ona-vB-l9a" firstAttribute="top" secondItem="yyT-qN-5Tt" secondAttribute="top" constant="2" id="rup-0X-QqM"/>
+                                        <constraint firstItem="gTL-fx-pZR" firstAttribute="top" secondItem="hob-Tg-isO" secondAttribute="bottom" constant="8" id="vVx-xG-gQj"/>
                                         <constraint firstItem="gTL-fx-pZR" firstAttribute="bottom" secondItem="yyT-qN-5Tt" secondAttribute="bottomMargin" id="xFM-pw-xpD"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="addressLabel" destination="gTL-fx-pZR" id="y0v-9N-3Gj"/>
                                     <outlet property="descriptionLabel" destination="hob-Tg-isO" id="bdl-i9-EQQ"/>
+                                    <outlet property="photoImageView" destination="ona-vB-l9a" id="9ug-H4-vee"/>
                                     <segue destination="SJc-O2-EP7" kind="show" identifier="EditLocation" id="Acv-Dp-POe"/>
                                 </connections>
                             </tableViewCell>
@@ -573,7 +586,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="wyA-ke-Yc8"/>
+        <segue reference="Acv-Dp-POe"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="first" width="30" height="30"/>

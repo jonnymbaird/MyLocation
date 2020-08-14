@@ -12,6 +12,8 @@ class LocationCell: UITableViewCell {
     
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var photoImageView: UIImageView!
+    
 
 
     override func awakeFromNib() {
@@ -30,8 +32,15 @@ class LocationCell: UITableViewCell {
         descriptionLabel.text = hasDescription ? location.locationDescription : "(No Description)"
         
         addressLabel.text = location.returnAddress()
+        photoImageView.image = thumbnail(for: location)
         
-        
+    }
+    
+    func thumbnail(for location: Location) -> UIImage {
+        if location.hasPhoto, let image = location.photoImage {
+            return image
+        }
+        return UIImage()
     }
 
 }
