@@ -101,6 +101,8 @@ class LocationDetailsViewController: UITableViewController {
         }
     }
     
+    var observer: Any!
+    
     // MARK:- Override Functions
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -130,6 +132,8 @@ class LocationDetailsViewController: UITableViewController {
         
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 43.5
+        
+        listenForBackgroundNotification()
     }
     
     override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
@@ -209,6 +213,25 @@ class LocationDetailsViewController: UITableViewController {
         let cellHeight: CGFloat = 260 * aspectRatio
         imageHeight.constant = cellHeight
         tableView.reloadData()
+    }
+    
+    func listenForBackgroundNotification() {
+        observer = NotificationCenter.default.addObserver(
+            forName: UIScene.didEnterBackgroundNotification,
+            object: nil,
+            queue: OperationQueue.main) { [weak self] _ in
+                if let weakSelf = self {
+                    if weakSelf.presentedViewController != nil {
+                        weakSelf.dismiss(animated: false, completion: nil)
+                    }
+                    weakSelf.descriptionTextView.resignFirstResponder()
+                }
+        }
+    }
+    
+    deinit {
+        print("*** deinit \(self)")
+        NotificationCenter.default.removeObserver(observer)
     }
     
 }
