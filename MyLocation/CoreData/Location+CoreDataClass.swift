@@ -28,15 +28,9 @@ public class Location: NSManagedObject, MKAnnotation {
     func returnAddress() -> String {
         var text = ""
         if let placemark = self.placemark {
-          if let s = placemark.subThoroughfare {
-            text += s + " "
-          }
-          if let s = placemark.thoroughfare {
-            text += s + ", "
-          }
-          if let s = placemark.locality {
-            text += s
-          }
+            text.add(text: placemark.subThoroughfare, separatedBy: "")
+            text.add(text: placemark.thoroughfare, separatedBy: ", ")
+            text.add(text: placemark.locality, separatedBy: ", ")
         } else {
             text = String(format: "Lat: %.8f, Long: %.8f",
                           self.latitude,

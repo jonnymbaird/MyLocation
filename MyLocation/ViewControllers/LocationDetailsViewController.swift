@@ -199,27 +199,17 @@ class LocationDetailsViewController: UITableViewController {
     // MARK:- Helper Methods
     
     func string(from placemark: CLPlacemark) -> String {
-        var text = ""
-        if let s = placemark.subThoroughfare {
-            text += s + " "
-        }
-        if let s = placemark.thoroughfare {
-            text += s + ", "
-        }
-        if let s = placemark.locality {
-            text += s + ", "
-        }
-        if let s = placemark.administrativeArea {
-            text += s + " "
-        }
-        if let s = placemark.postalCode {
-            text += s + ", "
-        }
-        if let s = placemark.country {
-            text += s
-        }
-        return text
+      var line = ""
+      line.add(text: placemark.subThoroughfare)
+      line.add(text: placemark.thoroughfare, separatedBy: " ")
+      line.add(text: placemark.locality, separatedBy: ", ")
+      line.add(text: placemark.administrativeArea,
+        separatedBy: ", ")
+      line.add(text: placemark.postalCode, separatedBy: " ")
+      line.add(text: placemark.country, separatedBy: ", ")
+      return line
     }
+
     
     func format(date: Date) -> String {
         return dateFormatter.string(from: date)
@@ -260,18 +250,22 @@ extension LocationDetailsViewController: UIImagePickerControllerDelegate, UINavi
     // MARK: - Image Helper Methods
     
     func takePhotoWithCamera() {
-        let imagePicker = UIImagePickerController()
+        let imagePicker = MyImagePickerController()
         imagePicker.sourceType = .camera
         imagePicker.delegate = self
         imagePicker.allowsEditing = true
+        imagePicker.view.tintColor = view.tintColor
+        
         present(imagePicker, animated: true, completion: nil)
     }
     
     func choosePhotoFromLibrary() {
-        let imagePicker = UIImagePickerController()
+        let imagePicker = MyImagePickerController()
         imagePicker.sourceType = .photoLibrary
         imagePicker.delegate = self
         imagePicker.allowsEditing = true
+        imagePicker.view.tintColor = view.tintColor
+
         present(imagePicker, animated: true, completion: nil)
     }
     
