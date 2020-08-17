@@ -122,10 +122,11 @@
         <scene sceneID="V09-mc-X28">
             <objects>
                 <tableViewController id="dhp-DM-vJ0" customClass="LocationsViewController" customModule="MyLocation" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="E1S-CB-Lu8">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" indicatorStyle="white" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="E1S-CB-Lu8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="separatorColor" white="1" alpha="0.19931020066889632" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LocationCell" id="ZsH-CF-68f" customClass="LocationCell" customModule="MyLocation" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="56.5"/>
@@ -138,10 +139,10 @@
                                             <rect key="frame" x="76" y="30.5" width="283" height="17.5"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <nil key="highlightedColor"/>
+                                            <color key="textColor" white="1" alpha="0.59990332357859533" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="highlightedColor" white="1" alpha="0.59953752090301005" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </label>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ona-vB-l9a">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ona-vB-l9a">
                                             <rect key="frame" x="16" y="2" width="52" height="52.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="52" id="Qym-yj-KGc"/>
@@ -152,8 +153,8 @@
                                             <rect key="frame" x="76" y="6" width="283" height="20.5"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </label>
                                     </subviews>
                                     <constraints>
@@ -169,6 +170,7 @@
                                         <constraint firstItem="gTL-fx-pZR" firstAttribute="bottom" secondItem="yyT-qN-5Tt" secondAttribute="bottomMargin" id="xFM-pw-xpD"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="addressLabel" destination="gTL-fx-pZR" id="y0v-9N-3Gj"/>
                                     <outlet property="descriptionLabel" destination="hob-Tg-isO" id="bdl-i9-EQQ"/>
@@ -213,12 +215,12 @@
                         <viewLayoutGuide key="safeArea" id="lO7-va-A8B"/>
                     </view>
                     <navigationItem key="navigationItem" title="Map" id="Gxq-8b-KZA">
-                        <barButtonItem key="leftBarButtonItem" title="Locations" id="eeb-jj-CdJ">
+                        <barButtonItem key="leftBarButtonItem" title="Locations" image="Pin" id="eeb-jj-CdJ">
                             <connections>
                                 <action selector="showLocations" destination="kkl-Ax-VwZ" id="ffN-pb-cPw"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="User" id="iVg-jT-0lJ">
+                        <barButtonItem key="rightBarButtonItem" title="User" image="User" id="iVg-jT-0lJ">
                             <connections>
                                 <action selector="showUser" destination="kkl-Ax-VwZ" id="pL6-28-aBM"/>
                             </connections>
@@ -590,12 +592,14 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="6Jj-bb-Uux"/>
+        <segue reference="Acv-Dp-POe"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="0.93333333333333335" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
     <resources>
         <image name="Locations" width="30" height="30"/>
         <image name="Map" width="30" height="30"/>
+        <image name="Pin" width="24" height="24"/>
         <image name="Tag" width="30" height="30"/>
+        <image name="User" width="24" height="24"/>
     </resources>
 </document>
