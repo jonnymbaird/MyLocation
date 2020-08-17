@@ -174,7 +174,14 @@ class LocationDetailsViewController: UITableViewController {
     }
     
 
-    
+    override func tableView(_ tableView: UITableView,
+                       willDisplay cell: UITableViewCell,
+                     forRowAt indexPath: IndexPath) {
+      let selection = UIView(frame: CGRect.zero)
+      selection.backgroundColor = UIColor(white: 1.0, alpha: 0.3)
+      cell.selectedBackgroundView = selection
+    }
+
     
     // MARK:- Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
