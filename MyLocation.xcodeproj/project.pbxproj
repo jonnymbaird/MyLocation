@@ -25,7 +25,6 @@
 		32BBC2E72440BE4700C19120 /* CurrentLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BBC2E62440BE4700C19120 /* CurrentLocationViewController.swift */; };
 		32BBC2EC2440BE4700C19120 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32BBC2EA2440BE4700C19120 /* Main.storyboard */; };
 		32BBC2F12440BE4800C19120 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32BBC2F02440BE4800C19120 /* Assets.xcassets */; };
-		32BBC2F42440BE4800C19120 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32BBC2F22440BE4800C19120 /* LaunchScreen.storyboard */; };
 		32DCB8DB24E2F44C0033BAC8 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DCB8DA24E2F44C0033BAC8 /* MapViewController.swift */; };
 		32DCB8DD24E6DEB80033BAC8 /* UIImage+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DCB8DC24E6DEB80033BAC8 /* UIImage+Resize.swift */; };
 /* End PBXBuildFile section */
@@ -50,7 +49,6 @@
 		32BBC2E62440BE4700C19120 /* CurrentLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentLocationViewController.swift; sourceTree = "<group>"; };
 		32BBC2EB2440BE4700C19120 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		32BBC2F02440BE4800C19120 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		32BBC2F32440BE4800C19120 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		32BBC2F52440BE4800C19120 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		32DCB8DA24E2F44C0033BAC8 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		32DCB8DC24E6DEB80033BAC8 /* UIImage+Resize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Resize.swift"; sourceTree = "<group>"; };
@@ -139,7 +137,6 @@
 				32BBC2E42440BE4700C19120 /* SceneDelegate.swift */,
 				32BBC2EA2440BE4700C19120 /* Main.storyboard */,
 				32BBC2F02440BE4800C19120 /* Assets.xcassets */,
-				32BBC2F22440BE4800C19120 /* LaunchScreen.storyboard */,
 				32BBC2F52440BE4800C19120 /* Info.plist */,
 			);
 			path = MyLocation;
@@ -203,7 +200,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				32BBC2F42440BE4800C19120 /* LaunchScreen.storyboard in Resources */,
 				32BBC2F12440BE4800C19120 /* Assets.xcassets in Resources */,
 				32153A0124EBF4A500CEBA5C /* Sound.caf in Resources */,
 				32BBC2EC2440BE4700C19120 /* Main.storyboard in Resources */,
@@ -246,14 +242,6 @@
 				32BBC2EB2440BE4700C19120 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		32BBC2F22440BE4800C19120 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				32BBC2F32440BE4800C19120 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -377,6 +365,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = H692NKW37Z;
 				INFOPLIST_FILE = MyLocation/Info.plist;
@@ -395,6 +384,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = H692NKW37Z;
 				INFOPLIST_FILE = MyLocation/Info.plist;
