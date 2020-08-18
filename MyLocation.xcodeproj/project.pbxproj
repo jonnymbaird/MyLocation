@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		32153A0124EBF4A500CEBA5C /* Sound.caf in Resources */ = {isa = PBXBuildFile; fileRef = 32153A0024EBF4A500CEBA5C /* Sound.caf */; };
 		3225DCC02448B4B8000E8D26 /* LocationDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3225DCBF2448B4B8000E8D26 /* LocationDetailsViewController.swift */; };
 		3225DCC22449C5D1000E8D26 /* CategoryPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3225DCC12449C5D1000E8D26 /* CategoryPickerViewController.swift */; };
 		325CC6B224C72C2C00ACA038 /* LocationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325CC6B124C72C2C00ACA038 /* LocationsViewController.swift */; };
@@ -30,6 +31,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		32153A0024EBF4A500CEBA5C /* Sound.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Sound.caf; sourceTree = "<group>"; };
 		3225DCBF2448B4B8000E8D26 /* LocationDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailsViewController.swift; sourceTree = "<group>"; };
 		3225DCC12449C5D1000E8D26 /* CategoryPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPickerViewController.swift; sourceTree = "<group>"; };
 		325CC6B124C72C2C00ACA038 /* LocationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsViewController.swift; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 		32909F1824A8F915004A89AF /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				32153A0024EBF4A500CEBA5C /* Sound.caf */,
 				32909F1924A8FE23004A89AF /* Functions.swift */,
 				32909F1524A8F2F9004A89AF /* HudView.swift */,
 				32DCB8DC24E6DEB80033BAC8 /* UIImage+Resize.swift */,
@@ -202,6 +205,7 @@
 			files = (
 				32BBC2F42440BE4800C19120 /* LaunchScreen.storyboard in Resources */,
 				32BBC2F12440BE4800C19120 /* Assets.xcassets in Resources */,
+				32153A0124EBF4A500CEBA5C /* Sound.caf in Resources */,
 				32BBC2EC2440BE4700C19120 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
