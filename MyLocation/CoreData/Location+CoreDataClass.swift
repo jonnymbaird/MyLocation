@@ -28,20 +28,46 @@ public class Location: NSManagedObject, MKAnnotation {
     func returnAddress() -> String {
         var text = ""
         if let placemark = self.placemark {
-          if let s = placemark.subThoroughfare {
-            text += s + " "
-          }
-          if let s = placemark.thoroughfare {
-            text += s + ", "
-          }
-          if let s = placemark.locality {
-            text += s
-          }
+            text.add(text: placemark.subThoroughfare, separatedBy: "")
+            text.add(text: placemark.thoroughfare, separatedBy: ", ")
+            text.add(text: placemark.locality, separatedBy: ", ")
         } else {
             text = String(format: "Lat: %.8f, Long: %.8f",
                           self.latitude,
                           self.longitude)
         }
         return text
+    }
+    
+    var hasPhoto: Bool {
+        return photoID != nil
+    }
+    
+    var photoURL: URL {
+        assert(photoID != nil, "No photo ID is set")
+        let filename = "Photo-\(photoID!.intValue).jpg"
+        return applicationDocumentsDirectory.appendingPathComponent(filename)
+    }
+    
+    var photoImage: UIImage? {
+        return UIImage(contentsOfFile: photoURL.path)
+    }
+    
+    func removePhotoFile() {
+        if hasPhoto {
+            do {
+                try FileManager.default.removeItem(at: photoURL)
+            } catch {
+                print("Error removing file: \(error)")
+            }
+        }
+    }
+    
+    class func nextPhotoID() -> Int {
+        let userDefaults = UserDefaults.standard
+        let currentID = userDefaults.integer(forKey: "PhotoID") + 1
+        userDefaults.set(currentID, forKey: "PhotoID")
+        userDefaults.synchronize()
+        return currentID
     }
 }

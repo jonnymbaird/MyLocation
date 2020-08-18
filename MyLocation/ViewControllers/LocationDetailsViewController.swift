@@ -24,6 +24,10 @@ class LocationDetailsViewController: UITableViewController {
     @IBOutlet weak var longitudeLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var addPhotoLabel: UILabel!
+    @IBOutlet weak var imageHeight: NSLayoutConstraint!
+    
     
     // MARK:- Actions
     @IBAction func done() {
@@ -36,6 +40,7 @@ class LocationDetailsViewController: UITableViewController {
         } else {
             hudView.text = "Tagged"
             location = Location(context: managedObjectContext)
+            location.photoID = nil
         }
 
         location.locationDescription = descriptionTextView.text
@@ -44,6 +49,20 @@ class LocationDetailsViewController: UITableViewController {
         location.longitude = coordinate.longitude
         location.date = date
         location.placemark = placemark
+        
+        if let image = image {
+            if !location.hasPhoto {
+                location.photoID = Location.nextPhotoID() as NSNumber
+            }
+            if let data = image.jpegData(compressionQuality: 0.5) {
+                do {
+                    try data.write(to: location.photoURL, options: .atomic)
+                } catch {
+                    print("Error writing file: \(error)")
+                }
+            }
+        }
+        
         do {
             try managedObjectContext.save()
             afterDelay(0.6) {
@@ -89,12 +108,27 @@ class LocationDetailsViewController: UITableViewController {
     }
     var descriptionText: String = ""
     
+    var image: UIImage? {
+        didSet {
+            if let theImage = image {
+                show(image: theImage)
+            }
+        }
+    }
+    
+    var observer: Any!
+    
     // MARK:- Override Functions
     override func viewDidLoad() {
         super.viewDidLoad()
         
         if let location = locationToEdit {
             title = "Edit Location"
+            if location.hasPhoto {
+                if let theImage = location.photoImage {
+                    show(image: theImage)
+                }
+            }
         }
         
         descriptionTextView.text = descriptionText
@@ -118,6 +152,8 @@ class LocationDetailsViewController: UITableViewController {
         
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 43.5
+        
+        listenForBackgroundNotification()
     }
     
     override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
@@ -131,11 +167,21 @@ class LocationDetailsViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 && indexPath.row == 0 {
             descriptionTextView.becomeFirstResponder()
+        } else if indexPath.section == 1 && indexPath.row == 0 {
+            tableView.deselectRow(at: indexPath, animated: true)
+            pickPhoto()
         }
     }
     
 
-    
+    override func tableView(_ tableView: UITableView,
+                       willDisplay cell: UITableViewCell,
+                     forRowAt indexPath: IndexPath) {
+      let selection = UIView(frame: CGRect.zero)
+      selection.backgroundColor = UIColor(white: 1.0, alpha: 0.3)
+      cell.selectedBackgroundView = selection
+    }
+
     
     // MARK:- Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -160,30 +206,111 @@ class LocationDetailsViewController: UITableViewController {
     // MARK:- Helper Methods
     
     func string(from placemark: CLPlacemark) -> String {
-        var text = ""
-        if let s = placemark.subThoroughfare {
-            text += s + " "
-        }
-        if let s = placemark.thoroughfare {
-            text += s + ", "
-        }
-        if let s = placemark.locality {
-            text += s + ", "
-        }
-        if let s = placemark.administrativeArea {
-            text += s + " "
-        }
-        if let s = placemark.postalCode {
-            text += s + ", "
-        }
-        if let s = placemark.country {
-            text += s
-        }
-        return text
+      var line = ""
+      line.add(text: placemark.subThoroughfare)
+      line.add(text: placemark.thoroughfare, separatedBy: " ")
+      line.add(text: placemark.locality, separatedBy: ", ")
+      line.add(text: placemark.administrativeArea,
+        separatedBy: ", ")
+      line.add(text: placemark.postalCode, separatedBy: " ")
+      line.add(text: placemark.country, separatedBy: ", ")
+      return line
     }
+
     
     func format(date: Date) -> String {
         return dateFormatter.string(from: date)
     }
     
+    func show(image: UIImage) {
+        imageView.image = image
+        imageView.isHidden = false
+        addPhotoLabel.text = ""
+        let aspectRatio: CGFloat = image.size.width / image.size.height
+        let cellHeight: CGFloat = 260 * aspectRatio
+        imageHeight.constant = cellHeight
+        tableView.reloadData()
+    }
+    
+    func listenForBackgroundNotification() {
+        observer = NotificationCenter.default.addObserver(
+            forName: UIScene.didEnterBackgroundNotification,
+            object: nil,
+            queue: OperationQueue.main) { [weak self] _ in
+                if let weakSelf = self {
+                    if weakSelf.presentedViewController != nil {
+                        weakSelf.dismiss(animated: false, completion: nil)
+                    }
+                    weakSelf.descriptionTextView.resignFirstResponder()
+                }
+        }
+    }
+    
+    deinit {
+        print("*** deinit \(self)")
+        NotificationCenter.default.removeObserver(observer)
+    }
+    
+}
+
+extension LocationDetailsViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    // MARK: - Image Helper Methods
+    
+    func takePhotoWithCamera() {
+        let imagePicker = MyImagePickerController()
+        imagePicker.sourceType = .camera
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = true
+        imagePicker.view.tintColor = view.tintColor
+        
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+    func choosePhotoFromLibrary() {
+        let imagePicker = MyImagePickerController()
+        imagePicker.sourceType = .photoLibrary
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = true
+        imagePicker.view.tintColor = view.tintColor
+
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+    func pickPhoto() {
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            showPhotoMenu()
+        } else {
+            choosePhotoFromLibrary()
+        }
+    }
+    
+    func showPhotoMenu() {
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let actCancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alert.addAction(actCancel)
+        
+        let actPhoto = UIAlertAction(title: "Take Photo", style: .default, handler: { _ in
+            self.takePhotoWithCamera()
+        })
+        alert.addAction(actPhoto)
+        
+        let actLibrary = UIAlertAction(title: "Choose from Library", style: .default, handler: { _ in
+            self.choosePhotoFromLibrary()
+        })
+        alert.addAction(actLibrary)
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
+    // MARK: - Image Picker Delegates
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage
+        
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+            dismiss(animated: true, completion: nil)
+    }
 }
